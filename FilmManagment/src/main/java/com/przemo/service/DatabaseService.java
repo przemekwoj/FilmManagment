@@ -3,7 +3,9 @@ package com.przemo.service;
 import java.util.List;
 
 import com.przemo.entity.Admin;
+import com.przemo.entity.Film;
 import com.przemo.entity.NormalUser;
+import com.przemo.entity.TempFilm;
 import com.przemo.entity.abst.User;
 
 public interface DatabaseService 
@@ -14,7 +16,37 @@ public interface DatabaseService
 	
 	public List<NormalUser> getAllNormalUsers();
 	
+	public List<Film> getAllFilms();
+	
 	public void saveAdmin(Admin admin);
 	
 	public void saveNormalUser(NormalUser normalUser);
+	
+	public void saveFilm(Film film);
+	
+	public void saveTempFilm(TempFilm film);
+
+	public TempFilm getTempFilm(int tempFilmId);
+	
+	public Film getFilmById(int filmId);
+	
+	public User getUserById(int userId);
+	
+	public Admin geAdminById(int adminId);
+
+	public NormalUser getNormalUseryId(int normalUserId);
+
+	public void deleteFilmById(int filmId);
+	
+	public void updateFilm(Film film);
+	
+	public void updateUser(User user);
+	
+	public List<TempFilm> getAllTempFilm();
+	
+	public void deleteTempFilmById(int tempFilmId);
+	
+	public void addTempFilmToMainDB(Film tempFilm);
+
+
 }

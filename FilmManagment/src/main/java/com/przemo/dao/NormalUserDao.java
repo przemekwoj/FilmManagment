@@ -10,5 +10,8 @@ public interface NormalUserDao
 	public List<NormalUser> getAllNormalUsers();
 	
 	public void saveNormalUser(NormalUser normalUser);
+	
+	public NormalUser getNormalUseryId(int normalUserId);
+
 
 }

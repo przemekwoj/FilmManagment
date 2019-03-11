@@ -39,5 +39,13 @@ public class AdminDaoImpl implements AdminDao
 		
 		return results;
 	}
+
+	@Override
+	public Admin getAdminById(int adminId) 
+	{
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		return currentSession.get(Admin.class, adminId);
+	}
 	
 }

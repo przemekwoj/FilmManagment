@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.przemo.entity.Admin;
 import com.przemo.entity.NormalUser;
+import com.przemo.entity.TempFilm;
 
 @Repository
 public class NormalUserDaoImpl  implements NormalUserDao
@@ -35,5 +36,15 @@ public class NormalUserDaoImpl  implements NormalUserDao
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		currentSession.save(normalUser);		
+	}
+
+	@Override
+	public NormalUser getNormalUseryId(int normalUserId) 
+	{
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// now retrieve/read from database using the primary key
+		return currentSession.get(NormalUser.class, normalUserId);	
+
 	}
 }

@@ -1,4 +1,6 @@
-package com.przemo.config;
+/*package com.przemo.config;
+
+
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -8,15 +10,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
 		// add our users for in memory authentication
-		
 		UserBuilder users = User.withDefaultPasswordEncoder();
 		
 		auth.inMemoryAuthentication()
@@ -29,15 +31,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	@Override
 	protected void configure(HttpSecurity http) throws Exception 
 	{
-		http.authorizeRequests()
+		http.authorizeRequests().antMatchers("/registration","/us").permitAll()
 					.anyRequest()
 					.authenticated()
 					.and()	
 					.formLogin().loginPage("/loginPage").usernameParameter("email")
 					.loginProcessingUrl("/authenticateTheUser")
-					.permitAll();
+					.permitAll()
+					.and()
+					.logout().permitAll();
+					
 					
 	}
 	
 
-}
+}*/

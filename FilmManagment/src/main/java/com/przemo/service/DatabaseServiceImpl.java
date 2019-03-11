@@ -6,10 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.przemo.dao.AdminDao;
+import com.przemo.dao.FilmDao;
 import com.przemo.dao.NormalUserDao;
+import com.przemo.dao.TempFilmDao;
 import com.przemo.dao.UserDao;
 import com.przemo.entity.Admin;
+import com.przemo.entity.Film;
 import com.przemo.entity.NormalUser;
+import com.przemo.entity.TempFilm;
 import com.przemo.entity.abst.User;
 
 @Service
@@ -24,6 +28,12 @@ public class DatabaseServiceImpl implements DatabaseService
 	
 	@Autowired
 	private NormalUserDao normalUserDao;
+	
+	@Autowired
+	private FilmDao filmDao;
+	
+	@Autowired 
+	private TempFilmDao tempFilmDao;
 
 	@Override
 	public List<User> getAllUsers()
@@ -53,6 +63,90 @@ public class DatabaseServiceImpl implements DatabaseService
 	public void saveNormalUser(NormalUser normalUser) 
 	{
 		normalUserDao.saveNormalUser(normalUser);
+	}
+
+	@Override
+	public void saveFilm(Film film) 
+	{
+		filmDao.saveFilm(film);
+	}
+
+	@Override
+	public List<Film> getAllFilms() 
+	{
+		return filmDao.getAllFilms();
+	}
+
+	@Override
+	public Film getFilmById(int filmId) 
+	{
+		return filmDao.getFilmById(filmId);
+	}
+
+	@Override
+	public void saveTempFilm(TempFilm film)
+	{
+		tempFilmDao.saveTempFilm(film);
+	}
+
+	@Override
+	public TempFilm getTempFilm(int tempFilmId)
+	{
+		return tempFilmDao.getTempFilm(tempFilmId);
+	}
+
+	@Override
+	public void deleteFilmById(int filmId) 
+	{
+		filmDao.deleteFilmById(filmId);
+	}
+
+	@Override
+	public User getUserById(int userId) {
+		// TODO Auto-generated method stub
+		return userDao.getUserById(userId);
+	}
+
+	@Override
+	public Admin geAdminById(int adminId) {
+		// TODO Auto-generated method stub
+		return adminDao.getAdminById(adminId);
+	}
+
+	@Override
+	public NormalUser getNormalUseryId(int normalUserId) {
+		// TODO Auto-generated method stub
+		return normalUserDao.getNormalUseryId(normalUserId);
+	}
+
+	@Override
+	public void updateFilm(Film film)
+	{
+		filmDao.updateFilm(film);
+	}
+
+	@Override
+	public void updateUser(User user) 
+	{
+		userDao.updateUser(user);
+	}
+
+	@Override
+	public List<TempFilm> getAllTempFilm()
+	{
+		return filmDao.getAllTempFilm();
+	}
+
+	@Override
+	public void deleteTempFilmById(int tempFilmId) 
+	{
+		filmDao.deleteTempFilmById(tempFilmId);
+	}
+
+	@Override
+	public void addTempFilmToMainDB(Film tempFilm) 
+	{
+		filmDao.addTempFilmToMainDB(tempFilm);
 	}
 
 }

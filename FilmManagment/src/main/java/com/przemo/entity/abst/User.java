@@ -1,5 +1,10 @@
 package com.przemo.entity.abst;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -8,7 +13,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.przemo.entity.Film;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -18,7 +26,7 @@ abstract public class User
 {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private int id;
 	
 	@Column(name = "email")
@@ -27,7 +35,31 @@ abstract public class User
 	@Column(name = "password")
 	private String password;
 	
+	@OneToMany(mappedBy = "user",
+			cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+					CascadeType.DETACH, CascadeType.REFRESH})
+	private List<Film> films;
 	
+	public void add(Film tempFilm)
+	{
+		if(films == null)
+		{
+			films =  new ArrayList<Film>();
+		}
+		
+		films.add(tempFilm);
+		
+		tempFilm.setUser(this);
+	}
+	
+	public List<Film> getFilms() {
+		return films;
+	}
+
+	public void setFilms(List<Film> films) {
+		this.films = films;
+	}
+
 	public int getId() {
 		return id;
 	}

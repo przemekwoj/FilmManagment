@@ -9,5 +9,8 @@ public interface AdminDao
 	public List<Admin> getAllAdmins();
 	
 	public void saveAdmin(Admin admin);
+	
+	public Admin getAdminById(int adminId);
+
 
 }
