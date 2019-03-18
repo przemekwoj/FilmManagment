@@ -53,6 +53,10 @@
 		<input type="submit" value="add new film request"/>
 	</form>
 	</c:if>
+	
+	<form action="${pageContext.request.contextPath}/test" method="GET">
+		<input type="submit" value="test"/>
+	</form>
 
 </body>
 

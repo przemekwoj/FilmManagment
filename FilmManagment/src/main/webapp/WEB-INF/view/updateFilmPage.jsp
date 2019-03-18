@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+asdsa ${tytul}
 	<form:form action="${pageContext.request.contextPath}/FilmManagment/updateFilm"  modelAttribute="film" method="POST">
 		<p>
 			tytul <form:input path="tytul"/>

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.przemo.entity.Admin;
-import com.przemo.entity.abst.User;
 
 @Repository
 public class AdminDaoImpl implements AdminDao

@@ -5,12 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.przemo.dao.ActorDao;
 import com.przemo.dao.AdminDao;
 import com.przemo.dao.FilmDao;
 import com.przemo.dao.NormalUserDao;
 import com.przemo.dao.TempFilmDao;
 import com.przemo.dao.UserDao;
 import com.przemo.entity.Admin;
+import com.przemo.entity.Aktor;
 import com.przemo.entity.Film;
 import com.przemo.entity.NormalUser;
 import com.przemo.entity.TempFilm;
@@ -34,6 +36,9 @@ public class DatabaseServiceImpl implements DatabaseService
 	
 	@Autowired 
 	private TempFilmDao tempFilmDao;
+	
+	@Autowired 
+	private ActorDao actorDao;
 
 	@Override
 	public List<User> getAllUsers()
@@ -147,6 +152,36 @@ public class DatabaseServiceImpl implements DatabaseService
 	public void addTempFilmToMainDB(Film tempFilm) 
 	{
 		filmDao.addTempFilmToMainDB(tempFilm);
+	}
+
+	@Override
+	public Aktor getActorById(int actorId)
+	{
+		return actorDao.getActorById(actorId);
+	}
+
+	@Override
+	public void saveActor(Aktor actor)
+	{
+		actorDao.saveActor(actor);
+	}
+
+	@Override
+	public void updateActor(Aktor aktor)
+	{
+		actorDao.updateActor(aktor);
+	}
+
+	@Override
+	public List<Aktor> getAllActors() 
+	{
+		return actorDao.getAllActors();
+	}
+
+	@Override
+	public void deleteActorFromFilmById(int actorId, int filmId)
+	{
+		filmDao.deleteActorFromFilmById(actorId, filmId);
 	}
 
 }

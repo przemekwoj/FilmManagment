@@ -1,8 +1,6 @@
 package com.przemo.controllers;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +11,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.przemo.entity.Admin;
 import com.przemo.entity.Film;
-import com.przemo.entity.NormalUser;
 import com.przemo.entity.TempFilm;
 import com.przemo.entity.abst.User;
 import com.przemo.service.DatabaseService;
@@ -83,10 +78,12 @@ public class FilmController
 	}
 	
 	@RequestMapping("/updateFilmPage")
-	public String updateFilmPage(Model theModel)
+	public String updateFilmPage(Model theModel,@RequestParam("filmId") int filmId)
 	{
-		theModel.addAttribute("film",new Film());
 		
+		Film film = databaseService.getFilmById(filmId);	
+		theModel.addAttribute("film",film);
+
 		return "updateFilmPage";
 	}
 	
@@ -149,5 +146,6 @@ public class FilmController
 
 		return new ModelAndView("redirect:/showHomePage");
 	}
+	
 	
 }

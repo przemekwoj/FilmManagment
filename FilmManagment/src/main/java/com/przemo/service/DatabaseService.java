@@ -3,6 +3,7 @@ package com.przemo.service;
 import java.util.List;
 
 import com.przemo.entity.Admin;
+import com.przemo.entity.Aktor;
 import com.przemo.entity.Film;
 import com.przemo.entity.NormalUser;
 import com.przemo.entity.TempFilm;
@@ -18,7 +19,11 @@ public interface DatabaseService
 	
 	public List<Film> getAllFilms();
 	
+	public List<Aktor> getAllActors();
+	
 	public void saveAdmin(Admin admin);
+	
+	public void saveActor(Aktor actor);
 	
 	public void saveNormalUser(NormalUser normalUser);
 	
@@ -38,7 +43,11 @@ public interface DatabaseService
 
 	public void deleteFilmById(int filmId);
 	
+	public void deleteActorFromFilmById(int actorId,int filmId);
+	
 	public void updateFilm(Film film);
+	
+	public void updateActor(Aktor aktor);
 	
 	public void updateUser(User user);
 	
@@ -47,6 +56,8 @@ public interface DatabaseService
 	public void deleteTempFilmById(int tempFilmId);
 	
 	public void addTempFilmToMainDB(Film tempFilm);
+	
+	public Aktor getActorById(int actorId);
 
 
 }

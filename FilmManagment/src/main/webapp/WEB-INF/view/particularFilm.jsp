@@ -27,6 +27,11 @@
 	<c:param name="userId" value="${param.userId}" />
 	</c:url>
 	
+	<c:url var="backToHomePage" value="${pageContext.request.contextPath}/backToHomePage">
+	<c:param name="filmId" value="${param.filmId}" />
+	<c:param name="userId" value="${param.userId}" />
+	</c:url>
+	
 	<c:set var="count" value="${count + 1}" scope="page"/>
 	${role} 
 	<table>
@@ -60,5 +65,16 @@
 			</td>
 		</tr>
 	</table>
+	<br>
+		
+	<c:url var="aktorzyPage" value="http://localhost:8080/FilmManagment/aktorzy">
+	</c:url>
+	<form action="${aktorzyPage}" method="GET">
+		<input type='hidden' name='filmId' id='filmId' value="${param.filmId}" />
+		<input type='hidden' name='userId' id='userId' value="${param.userId}" />
+		<input type="submit" value="akotrzy"/>
+	</form>
+	<br>
+	<a href="${backToHomePage}">Back</a>
 </body>
 </html>

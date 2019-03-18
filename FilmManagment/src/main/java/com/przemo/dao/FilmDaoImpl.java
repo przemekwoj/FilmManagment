@@ -8,10 +8,9 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.przemo.entity.Aktor;
 import com.przemo.entity.Film;
-import com.przemo.entity.NormalUser;
 import com.przemo.entity.TempFilm;
-import com.przemo.entity.abst.User;
 
 @Repository
 public class FilmDaoImpl implements FilmDao 
@@ -95,6 +94,23 @@ public class FilmDaoImpl implements FilmDao
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		currentSession.save(tempFilm);
+	}
+
+	@Override
+	public void deleteActorFromFilmById(int actorId, int filmId) 
+	{
+		Film film = getFilmById(filmId);
+		
+		for(Aktor aktor: film.getAktorzyList())
+		{
+			if(aktor.getAktorzy_id()==actorId)
+			{
+				film.getAktorzyList().remove(aktor);
+				break;
+			}
+		}
+		
+		updateFilm(film);
 	}
 	
 	
