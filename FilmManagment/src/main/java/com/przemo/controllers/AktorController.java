@@ -34,7 +34,7 @@ public class AktorController
 	
 	@GetMapping("/aktorzy")
 	public String aktorzy(@RequestParam("filmId") int filmId,
-			@RequestParam("userId") int userId,Model theModel)  
+			@RequestParam("userId") int userId,Model theModel,Map<String,Object> map)  
 	{
 		Film film = databaseService.getFilmById(filmId);
 		List<Aktor> listaAktorow = new ArrayList<Aktor>();
@@ -53,6 +53,7 @@ public class AktorController
 		actorWrapper.setActors(listaAktorow);
 		theModel.addAttribute("listaAktorow",listaAktorow);
 		theModel.addAttribute("actorWrapper",actorWrapper);
+		theModel.addAttribute("role",map.get("role"));
 		return "aktorzyPage";
 	}
 	

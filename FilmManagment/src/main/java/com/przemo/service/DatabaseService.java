@@ -59,5 +59,6 @@ public interface DatabaseService
 	
 	public Aktor getActorById(int actorId);
 
+	public List<Film> getAllOrderedFilms();
 
 }

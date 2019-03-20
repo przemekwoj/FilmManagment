@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.przemo.entity.Admin;
 import com.przemo.entity.Aktor;
 import com.przemo.entity.Film;
 import com.przemo.entity.TempFilm;
@@ -111,6 +112,19 @@ public class FilmDaoImpl implements FilmDao
 		}
 		
 		updateFilm(film);
+	}
+
+	@Override
+	public List<Film> getAllOrderedFilms()
+	{
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		String hql = "FROM Film WHERE dostepnosc='false' AND zamowione='false'"; //and zamowione = false
+
+		Query query = currentSession.createQuery(hql);
+		List<Film> results = query.list();
+		
+		return results;
 	}
 	
 	

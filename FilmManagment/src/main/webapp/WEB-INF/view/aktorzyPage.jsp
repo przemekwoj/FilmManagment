@@ -22,6 +22,10 @@
 </c:url>
 <c:url var="addActorPage" value="http://localhost:8080/FilmManagment/addActorPage">
 </c:url>
+<c:url var="backToPage" value="${pageContext.request.contextPath}/viewParticularFilm">
+	<c:param name="filmId" value="${param.filmId}" />
+	<c:param name="userId" value="${param.userId}" />
+</c:url>
 
 aktorzyPage
 <br>
@@ -36,26 +40,32 @@ aktorzyPage
             <form:input path="actors[${vs.index}].last_name"/>
 		<br>
    		</c:forEach>         
-                         
+ <c:if test="${ role == 'Admin'}">           
         <input type="submit" value="update" />
+ </c:if>
 </form:form>
-<form action="${addActorPage}" method="get">
-	<input type='hidden' name='filmId' id='filmId' value="${param.filmId}" />
-	<input type='hidden' name='userId' id='userId' value="${param.userId}" />
-	<input type="submit" value="add">
-</form>
+<c:if test="${ role == 'Admin'}">
+	<form action="${addActorPage}" method="get">
+		<input type='hidden' name='filmId' id='filmId' value="${param.filmId}" />
+		<input type='hidden' name='userId' id='userId' value="${param.userId}" />
+		<input type="submit" value="add">
+	</form>
+</c:if>
+<a href="${backToPage}">Back</a>
 </div>
 <div>
 	<br>
      <c:forEach var="tempAktor" items="${listaAktorow}">
-     <c:url var="deleteActorFromFilm" value="http://localhost:8080/FilmManagment/deleteActorFromFilm">
-	        	<c:param name="filmId" value="${param.filmId}" />
-				<c:param name="userId" value="${param.userId}" />
-				<c:param name="aktorId" value="${tempAktor.aktorzy_id}" />
-	</c:url> 
-	<a href="${deleteActorFromFilm}"
-				onclick="if (!(confirm('Are you sure you want to delete this Film?'))) return false">Delete</a>
-	<br>
+	     <c:url var="deleteActorFromFilm" value="http://localhost:8080/FilmManagment/deleteActorFromFilm">
+		        	<c:param name="filmId" value="${param.filmId}" />
+					<c:param name="userId" value="${param.userId}" />
+					<c:param name="aktorId" value="${tempAktor.aktorzy_id}" />
+		</c:url> 
+		<c:if test="${ role == 'Admin'}">
+		<a href="${deleteActorFromFilm}"
+					onclick="if (!(confirm('Are you sure you want to delete this Film?'))) return false">Delete</a>
+		<br>
+		</c:if>
     </c:forEach>                                  
 </div>
 

@@ -97,21 +97,19 @@ public class FilmController
 		
 		film.setDostepnosc(false);
 		
-		film.setIloscwyp(film.getIloscwyp() + 1);
+		/*film.setIloscwyp(film.getIloscwyp() + 1);
 		
 		Date date = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         date = cal.getTime();
-        System.out.println(date);
         film.setDatawyp(date);
         
         Date date2 = new Date();
         cal.setTime(date);
         cal.add(Calendar.MONTH, 2);
         date2 = cal.getTime();
-        System.out.println(date2);
-        film.setDatazwot(date2);
+        film.setDatazwot(date2);*/
 
 		System.out.println("podusmowanie : "+ film.getDatawyp() + " + "+film.getDatazwot());
 		user.add(film);

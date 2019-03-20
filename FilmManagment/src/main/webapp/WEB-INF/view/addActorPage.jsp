@@ -15,6 +15,10 @@ addActorPage
 	<c:param name="filmId" value="${param.filmId}" />
 	<c:param name="userId" value="${param.userId}" />
 </c:url>
+<c:url var="backToPage" value="${pageContext.request.contextPath}/viewParticularFilm">
+	<c:param name="filmId" value="${param.filmId}" />
+	<c:param name="userId" value="${param.userId}" />
+</c:url>
 <form:form action="${addActor}" method="POST"  modelAttribute="aktor">
    
   
@@ -24,5 +28,7 @@ addActorPage
            
         <input type="submit" value="add" />
 </form:form>
+<br>
+<a href="${backToPage}">Back</a>
 </body>
 </html>

@@ -184,4 +184,10 @@ public class DatabaseServiceImpl implements DatabaseService
 		filmDao.deleteActorFromFilmById(actorId, filmId);
 	}
 
+	@Override
+	public List<Film> getAllOrderedFilms() 
+	{
+		return filmDao.getAllOrderedFilms();
+	}
+
 }

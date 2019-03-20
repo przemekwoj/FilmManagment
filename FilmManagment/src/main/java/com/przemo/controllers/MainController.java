@@ -34,27 +34,4 @@ public class MainController
 		return "home";
 	}
 	
-	@GetMapping("/test")
-	public String test(Model theModel,Map<String,Object> map)
-	{
-		/*System.out.println("w tescie");
-		Film film = databaseService.getFilmById(2);
-		Aktor a = new Aktor();
-		a.setFirst_name("ahha");
-		System.out.println(film.toString());
-		System.out.println(a.toString());
-		a.add(film);
-		databaseService.saveActor(a);
-		System.out.println("po tescie");*/
-		
-		Film film = databaseService.getFilmById(1);
-		
-		System.out.println(film.getAktorzyList().toString());
-		
-		theModel.addAttribute("film",film);
-		
-		
-		return "test";
-		//return new ModelAndView("redirect:/showHomePage");
-	}
 }

@@ -24,6 +24,9 @@ public interface FilmDao
 	public void addTempFilmToMainDB(Film tempFilm);
 	
 	public void deleteActorFromFilmById(int actorId,int filmId);
+	
+	public List<Film> getAllOrderedFilms();
+
 
 
 }

@@ -7,13 +7,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>luv2code Company Home Page</title>
+	<title>Home Page</title>
 </head>
 
 <body>
 	<h2>Home Page</h2>
 	<hr>
 	
+	<c:url var="backToLoginPage" value="http://localhost:8080/FilmManagment">
+	</c:url>
 	Welcome!
 	
 	${param.userId}
@@ -53,11 +55,13 @@
 		<input type="submit" value="add new film request"/>
 	</form>
 	</c:if>
-	
-	<form action="${pageContext.request.contextPath}/test" method="GET">
-		<input type="submit" value="test"/>
+	<c:if test="${ role == 'Admin'}">
+	<form action="${pageContext.request.contextPath}/zmowieniaPage" method="GET">
+		<input type="submit" value="zamowienie"/>
 	</form>
-
+	</c:if>
+	<br>
+	<a href="${backToLoginPage}">Back</a>
 </body>
 
 </html>

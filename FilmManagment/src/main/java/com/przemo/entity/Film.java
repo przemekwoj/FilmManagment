@@ -46,6 +46,20 @@ public class Film
 	@Column(name = "dostepnosc")
 	private boolean dostepnosc;
 	
+	@Column(name = "zamowione")
+	private boolean zamowione;
+	
+
+
+	public boolean isZamowione() {
+		return zamowione;
+	}
+
+
+	public void setZamowione(boolean zamowione) {
+		this.zamowione = zamowione;
+	}
+
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
 				CascadeType.DETACH, CascadeType.REFRESH})		
 	@JoinColumn(name = "user_id")
@@ -59,9 +73,7 @@ public class Film
 	inverseJoinColumns=@JoinColumn(name="aktorzy_id")
 	)
 	private List<Aktor> aktorzyList;
-	
-
-	
+		
 	public Film()
 	{
 		setDostepnosc(true);

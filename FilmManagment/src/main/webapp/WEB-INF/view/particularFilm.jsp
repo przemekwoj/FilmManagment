@@ -51,8 +51,10 @@
 			<td>
 				<c:choose>
    					<c:when test="${film.dostepnosc}">
+   					<c:if test="${ role == 'NormalUser'}">
    						<a href="${zamowFilm}"
    						onclick="if (!(confirm('Are you sure you want to order this Film?'))) return false">Zamow</a>
+   					</c:if>
    					</c:when>
   			 		<c:otherwise>Niedostepna Aktualnie</c:otherwise>  
 					</c:choose>
